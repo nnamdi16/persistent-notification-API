@@ -11,7 +11,12 @@ exports.receiveNotification = async function(data) {
       paymentAccountName,
       amount,
       clearingFeeAmount,
-      bankTransferFeeAmount
+      bankTransferFeeAmount,
+      financialIdentificationNumber,
+      transferBankName,
+      transferBankAccountNumber,
+      hash
+      
     } = data;
 
     
@@ -22,7 +27,11 @@ exports.receiveNotification = async function(data) {
       paymentAccountName,
       amount,
       clearingFeeAmount,
-      bankTransferFeeAmount
+      bankTransferFeeAmount,
+      financialIdentificationNumber,
+      transferBankName,
+      transferBankAccountNumber,
+      hash
     });
     console.log(newNotification);
 

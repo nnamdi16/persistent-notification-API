@@ -32,6 +32,18 @@ let NotificationSchema = new Schema({
   bankTransferFeeAmount: {
     type: String
   },
+  financialIdentificationNumber: {
+    type:String
+  },
+  transferBankName: {
+    type: String
+  },
+  transferBankAccountNumber: {
+    type:String
+  },
+  hash: {
+    type: String
+  }
 
 });
 

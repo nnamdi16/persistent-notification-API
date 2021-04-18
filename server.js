@@ -74,6 +74,5 @@ function connect() {
     .connect(config.MONGODB_URL, options, () => {
       console.log("We are connected");
     })
-    .catch(err => console.log(err));
   return mongoose.connection;
 }

@@ -22,7 +22,7 @@ exports.receiveNotification = async (req, res) => {
     //or writeHead method
     return res
       .status(201)
-      .header("Authorization", token)
+      // .header("Authorization", token)
       .send({
         status:'SUCCESS'
       });

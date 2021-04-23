@@ -45,7 +45,7 @@ let NotificationSchema = new Schema({
     type: String
   }
 
-});
+}, {timestamps:true});
 
 
 model("Notification", NotificationSchema);

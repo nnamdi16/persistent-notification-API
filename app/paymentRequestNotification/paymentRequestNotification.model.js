@@ -25,7 +25,7 @@ let PaymentRequestNotificationSchema = new Schema({
     type: String
   }
 
-});
+}, {timestamps:true});
 
 
 model("PaymentRequestNotification", PaymentRequestNotificationSchema);

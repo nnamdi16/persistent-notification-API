@@ -1,8 +1,8 @@
 const { Router } = require("express");
 const router = Router();
-const {receiveNotification, basicAuth} = require("./paymentRequestNotification.controller");
+const {receiveNotification} = require("./paymentRequestNotification.controller");
 
 
-router.route("/paymentrequest").post(basicAuth, receiveNotification);
+router.route("/paymentrequest").post(receiveNotification);
 
 module.exports = router;

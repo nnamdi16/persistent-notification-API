@@ -9,15 +9,19 @@ exports.receiveNotification = async (req, res) => {
     res.set("Content-Type", "application/json");
     res.set("Accept", "application/json");
     const value = req.body;
+    console.log(value);
     const data = await receiveNotification(value);
     info(data);
     console.log(data);
     if (data.error) {
-      return res.status(200).json({
+      return res.status(302).json({
         status: 0,
         message: data.msg
       });
     }
+    // if (data.retry) {
+    //   return res.status(444);
+    // }
 
     //or writeHead method
     return res

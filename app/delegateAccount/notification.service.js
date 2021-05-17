@@ -7,6 +7,7 @@ exports.receiveNotification = async function(data) {
     const {
       statusCode,
       statusMessage,
+      transactionReference,
       accountNumber,
       accountName,
       amount,
@@ -19,10 +20,16 @@ exports.receiveNotification = async function(data) {
       
     } = data;
 
-    
+   
+    if (accountNumber == '2741938938') {
+      return {
+        retry:true
+      }
+    }
     const newNotification = new NotificationSchema({
       statusCode,
       statusMessage,
+      transactionReference,
       paymentAccountNumber:accountNumber,
       paymentAccountName:accountName,
       amount,
@@ -36,6 +43,7 @@ exports.receiveNotification = async function(data) {
     console.log(newNotification);
 
     await newNotification.save();
+    console.log(newNotification);
     return {
       status: false
     };

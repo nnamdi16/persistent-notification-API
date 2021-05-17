@@ -43,6 +43,9 @@ let NotificationSchema = new Schema({
   },
   hash: {
     type: String
+  },
+  transactionReference: {
+    type: String
   }
 
 }, {timestamps:true});

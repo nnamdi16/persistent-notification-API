@@ -12,7 +12,7 @@ const methodOverride = require("method-override");
 // const csrf = require("csurf");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
-const mongoStore = require("connect-mongo")(session);
+const mongoStore = require("express-mongoose-store")(session, mongoose);
 const flash = require("connect-flash");
 const winston = require("winston");
 const helpers = require("view-helpers");
@@ -26,7 +26,7 @@ const env = process.env.NODE_ENV || "development";
  * Expose
  */
 
-module.exports = function(app, passport) {
+module.exports = function (app, passport) {
   app.use(helmet());
 
   // Compression middleware (should be placed before express.static)
@@ -60,7 +60,7 @@ module.exports = function(app, passport) {
   app.set("view engine", "pug");
 
   // expose package.json to views
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     res.locals.pkg = pkg;
     res.locals.env = env;
     next();
@@ -74,7 +74,7 @@ module.exports = function(app, passport) {
   );
   app.use(bodyParser.json());
   app.use(
-    methodOverride(function(req) {
+    methodOverride(function (req) {
       if (req.body && typeof req.body === "object" && "_method" in req.body) {
         // look in urlencoded POST bodies and delete it
         const method = req.body._method;
@@ -89,15 +89,13 @@ module.exports = function(app, passport) {
   app.use(
     session({
       secret: pkg.name,
-      cookie: { maxAge: 60000 },
+      cookie: {
+        maxAge: 60000
+      },
       proxy: true,
       resave: true,
       saveUninitialized: true,
-      store: new mongoStore({
-        mongooseConnection: mongoose.connection,
-        url: config.MONGODB_URL,
-        collection: "sessions"
-      })
+  
     })
   );
 

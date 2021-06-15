@@ -5,16 +5,16 @@ const {authenticate} = require('../customer/customer.service');
 
 const {info} = require("heroku-log");
 const logger = require('heroku-logger');
+const validate = require("../shared/util");
 exports.receiveNotification = async (req, res) => {
   try {
     res.set("Content-Type", "application/json");
     res.set("Accept", "application/json");
-    const value = req.body;
+    const value = validate(req.body);
     info(req.body);
-    logger.info(req.body);
+    logger.info(value);
     const data = await receiveNotification(value);
     info(data);
-    console.log(data);
     if (data.error) {
       return res.status(200).json({
         status: 0,

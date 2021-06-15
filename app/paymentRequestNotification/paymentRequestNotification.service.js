@@ -3,23 +3,25 @@ const {info} = require("heroku-log");
 
 exports.receiveNotification = async function(data) {
   try {
-   
+   console.log(data);
     const {
+      referenceNumber,
       statusCode,
       statusMessage,
-      notificationId,
-      externalReferenceNumber,
-      state
+      paymentMethods,
+      expiryDateTimeUTC,
+      payerPagaAccountHolder
       
     } = data;
 
     
     const newNotification = new PaymentRequestNotificationSchema({
+      referenceNumber,
       statusCode,
       statusMessage,
-      notificationId,
-      externalReferenceNumber,
-      state
+      paymentMethods,
+      expiryDateTimeUTC,
+      payerPagaAccountHolder
     });
     console.log(newNotification);
 
@@ -31,4 +33,5 @@ exports.receiveNotification = async function(data) {
     throw new Error(error);
   }
 };
+
 

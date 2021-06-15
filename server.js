@@ -68,7 +68,9 @@ function connect() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    useCreateIndex: true
+    useCreateIndex: true,
+    ignoreUndefined: true
+    
   };
   mongoose
     .connect(config.MONGODB_URL, options, () => {

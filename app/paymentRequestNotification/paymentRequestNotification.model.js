@@ -2,30 +2,41 @@
  * Module dependencies
  */
 
-const { Schema, model } = require("mongoose");
+const {
+  Schema,
+  model
+} = require("mongoose");
 
 /**
  * Notification Schema
  */
 
 let PaymentRequestNotificationSchema = new Schema({
+  referenceNumber: {
+    type: String
+  },
   statusCode: {
     type: String
   },
   statusMessage: {
     type: String
   },
-  notificationId: {
-    type: String
+
+  paymentMethods: {
+    type: Array
   },
-  externalReferenceNumber: {
-    type: String
+  
+  expiryDateTimeUTC: {
+    type: String,
+    default:null
   },
-  state: {
-    type: String
+  payerPagaAccountHolder: {
+    type: Boolean
   }
 
-}, {timestamps:true});
+}, {
+  timestamps: true
+});
 
 
 model("PaymentRequestNotification", PaymentRequestNotificationSchema);

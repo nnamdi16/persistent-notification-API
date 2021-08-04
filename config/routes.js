@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 "use strict";
 
 /**
@@ -11,8 +12,8 @@ const integrationService = require("../app/integrationService/integrationService
 const customer = require("../app/customer/customer.route");
 const merchantServices = require("../app/merchant/merchant.route");
 const transaction = require("../app/transaction/transaction.route");
-const notification = require("../app/delegateAccount/notification.route");
-const paymentRequest = require('../app/paymentRequestNotification/paymentRequestNotification.route');
+const notification = require("../app/paga-collect/notification.route");
+const paymentRequest = require("../app/paymentRequestNotification/paymentRequestNotification.route");
 
 router.use(customer);
 router.use(integrationService);

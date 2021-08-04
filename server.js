@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 "use strict";
 
 /*
@@ -32,8 +33,8 @@ const connection = connect();
  */
 
 module.exports = {
-  app,
-  connection
+    app,
+    connection
 };
 
 // // Bootstrap models
@@ -53,28 +54,26 @@ app.use("/", router);
 // });
 connection.on("error", console.log).once("open", listen);
 app.get("/", function(req, res) {
-  res.status(200).sendFile(__dirname + "/index.html");
+    res.status(200).sendFile(__dirname + "/index.html");
 });
 //  .on("disconnected", connect)
 function listen() {
-  if (app.get("env") === "test") return;
-  app.listen(config.PORT);
-  console.log(`Express app started on port${config.PORT}`);
+    if (app.get("env") === "test") return;
+    app.listen(config.PORT);
+    console.log(`Express app started on port${config.PORT}`);
 }
 
 function connect() {
-  var options = {
-    // keepAlive: 1,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-    ignoreUndefined: true
-    
-  };
-  mongoose
-    .connect(config.MONGODB_URL, options, () => {
-      console.log("We are connected");
-    })
-  return mongoose.connection;
+    var options = {
+        // keepAlive: 1,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        ignoreUndefined: true
+    };
+    mongoose.connect(config.MONGODB_URL, options, () => {
+        console.log("We are connected");
+    });
+    return mongoose.connection;
 }

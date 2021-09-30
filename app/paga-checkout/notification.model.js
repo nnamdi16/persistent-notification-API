@@ -30,8 +30,9 @@ let CheckoutNotificationSchema = new Schema({
         type: String
     },
     errorCategory: {
-        type: String,
-        enum: ['RISK_ERROR', 'SYSTEM_ERROR', 'USER_ERROR']
+        type: String || null,
+        required: false,
+
     }
 
 }, { timestamps: true });
